@@ -36,7 +36,9 @@ const all3PartyScriptsLoaded = Promise.all([
 onMounted(async () => {
   await all3PartyScriptsLoaded
   $log('onMounted', all3PartyScriptsLoaded)
-  $('#summernote').summernote()
+  $('#summernote').summernote({
+    maxHeight: null,
+  })
   $('#summernote').on('summernote.enter', function (we, e) {
     // $(this).summernote("pasteHTML", `&nbsp\n&nbsp`);
     $(this).summernote('insertText', `\n`)
@@ -91,3 +93,31 @@ function onFileSave() {
     </div>
   </div>
 </template>
+
+<style scoped>
+#root {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+:deep(.note-editor.note-frame.panel.panel-default) {
+  flex-shrink: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+:deep(.note-editing-area) {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+:deep(.note-codable) {
+  min-height: 0;
+  overflow: auto;
+  height: auto;
+  flex-grow: 1;
+}
+</style>

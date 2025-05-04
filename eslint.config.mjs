@@ -8,5 +8,6 @@ export default withNuxt({
     '@typescript-eslint/ban-ts-comment': 0,
     'vue/html-self-closing': 0,
     'vue/require-default-prop': 0,
+    'vue/attributes-order': 0,
   },
 })
